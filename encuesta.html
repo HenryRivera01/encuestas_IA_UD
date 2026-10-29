@@ -1,0 +1,1244 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encuesta: Impacto de las Novísimas Tecnologías</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        padding: 20px;
+        color: #222;
+      }
+      .container {
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 5px;
+      }
+      h2 {
+        font-size: 18px;
+        margin-top: 30px;
+        border-bottom: 2px solid #00529b;
+        padding-bottom: 5px;
+        color: #00529b;
+      }
+      .datos-fijos {
+        background: #eef2f7;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+      .datos-fijos p {
+        margin: 5px 0;
+      }
+      .question {
+        margin: 15px 0;
+      }
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 6px;
+      }
+      input[type="text"],
+      input[type="number"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #bbb;
+        border-radius: 5px;
+        font-size: 15px;
+      }
+      textarea {
+        min-height: 70px;
+        resize: vertical;
+      }
+      .options label {
+        font-weight: normal;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 4px 0;
+      }
+      .buttons {
+        margin-top: 25px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      #guardar {
+        background: #00529b;
+        color: white;
+      }
+      #descargar {
+        background: #2e7d32;
+        color: white;
+      }
+      #limpiar {
+        background: #b71c1c;
+        color: white;
+      }
+      #mensaje {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 6px;
+        display: none;
+      }
+      .ok {
+        background: #e8f5e9;
+        color: #1b5e20;
+      }
+      .error {
+        background: #ffebee;
+        color: #b71c1c;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        font-size: 13px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 6px;
+        text-align: left;
+      }
+      th {
+        background: #eef2f7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS</h1>
+      <p style="text-align: center">
+        Facultad de Ingeniería — Semillero SIES — Grupo CITEC<br />
+        <strong
+          >Impacto de las novísimas tecnologías: encuesta de percepción</strong
+        >
+      </p>
+
+      <div class="datos-fijos">
+        <p><strong>Fecha de elaboración de la encuesta:</strong> 28/10/2026</p>
+        <p>
+          <strong>Nombre del investigador:</strong> Henry Alberto Rivera Ochoa -
+          20202020092
+        </p>
+        <p><strong>Lugar:</strong> Bogotá, Colombia</p>
+      </div>
+
+      <form id="formEncuesta">
+        <h2>1. Datos generales</h2>
+
+        <div class="question">
+          <label for="nombre">1. Nombre completo</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Puede escribir solo el nombre, sin apellido"
+            required
+          />
+        </div>
+
+        <div class="question">
+          <label for="edad">2. Edad</label>
+          <input
+            type="number"
+            id="edad"
+            name="edad"
+            min="1"
+            max="120"
+            required
+          />
+        </div>
+
+        <div class="question">
+          <label for="ocupacion">3. Cargo u ocupación</label>
+          <input type="text" id="ocupacion" name="ocupacion" required />
+        </div>
+
+        <div class="question">
+          <label for="domicilio">3.1 Lugar de domicilio</label>
+          <input
+            type="text"
+            id="domicilio"
+            name="domicilio"
+            placeholder="Ejemplo: Bogotá, localidad, barrio"
+            required
+          />
+        </div>
+
+        <div class="question">
+          <label for="nivel_educativo">4. Nivel educativo</label>
+          <select id="nivel_educativo" name="nivel_educativo" required>
+            <option value="">Seleccione...</option>
+            <option>Primaria</option>
+            <option>Secundaria</option>
+            <option>Técnico</option>
+            <option>Tecnólogo</option>
+            <option>Profesional</option>
+            <option>Posgrado</option>
+          </select>
+        </div>
+
+        <h2>2. Nivel de conocimiento tecnológico</h2>
+
+        <div class="question">
+          <label for="nivel_tecnologico"
+            >5. ¿Cómo califica su nivel de conocimiento sobre tecnología?</label
+          >
+          <select id="nivel_tecnologico" name="nivel_tecnologico" required>
+            <option value="">Seleccione...</option>
+            <option value="1 - Ninguno">1 - Ninguno</option>
+            <option value="2 - Básico">2 - Básico</option>
+            <option value="3 - Intermedio">3 - Intermedio</option>
+            <option value="4 - Avanzado">4 - Avanzado</option>
+            <option value="5 - Experto">5 - Experto</option>
+          </select>
+        </div>
+
+        <h2>3. Conocimiento general</h2>
+
+        <div class="question">
+          <label for="que_es_tecnologia"
+            >6. ¿Qué entiende usted por tecnología?</label
+          >
+          <textarea id="que_es_tecnologia" name="que_es_tecnologia"></textarea>
+        </div>
+
+        <div class="question">
+          <label
+            >7. ¿Considera importante la tecnología en la actualidad?</label
+          >
+          <div class="options">
+            <label
+              ><input
+                type="radio"
+                name="importancia_tecnologia"
+                value="Muy importante"
+              />
+              Muy importante</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="importancia_tecnologia"
+                value="Importante"
+              />
+              Importante</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="importancia_tecnologia"
+                value="Poco importante"
+              />
+              Poco importante</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="importancia_tecnologia"
+                value="Nada importante"
+              />
+              Nada importante</label
+            >
+          </div>
+        </div>
+
+        <div class="question">
+          <label>8. ¿Dónde ha adquirido sus conocimientos tecnológicos?</label>
+          <div class="options">
+            <label
+              ><input
+                type="checkbox"
+                name="origen_conocimiento"
+                value="Escuela o colegio"
+              />
+              Escuela o colegio</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="origen_conocimiento"
+                value="Universidad"
+              />
+              Universidad</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="origen_conocimiento"
+                value="Cursos o capacitaciones"
+              />
+              Cursos o capacitaciones</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="origen_conocimiento"
+                value="Trabajo"
+              />
+              Trabajo</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="origen_conocimiento"
+                value="Internet"
+              />
+              Internet</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="origen_conocimiento"
+                value="Familia o amigos"
+              />
+              Familia o amigos</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="origen_conocimiento"
+                value="Aprendizaje autodidacta"
+              />
+              Aprendizaje autodidacta</label
+            >
+            <label
+              ><input type="checkbox" name="origen_conocimiento" value="Otro" />
+              Otro</label
+            >
+          </div>
+          <input
+            type="text"
+            id="origen_conocimiento_otro"
+            name="origen_conocimiento_otro"
+            placeholder="Si seleccionó Otro, ¿cuál?"
+          />
+        </div>
+
+        <h2>4. Uso de la tecnología</h2>
+
+        <div class="question">
+          <label for="frecuencia_uso"
+            >9. ¿Con qué frecuencia utiliza dispositivos tecnológicos?</label
+          >
+          <select id="frecuencia_uso" name="frecuencia_uso">
+            <option value="">Seleccione...</option>
+            <option>Varias veces al día</option>
+            <option>Una vez al día</option>
+            <option>Varias veces por semana</option>
+            <option>Una vez por semana</option>
+            <option>Casi nunca</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label for="horas_uso"
+            >¿Cuántas horas en promedio usa tecnología al día?</label
+          >
+          <input
+            type="number"
+            id="horas_uso"
+            name="horas_uso"
+            min="0"
+            step="0.5"
+          />
+        </div>
+
+        <div class="question">
+          <label>10. ¿Qué dispositivos utiliza habitualmente?</label>
+          <div class="options">
+            <label
+              ><input
+                type="checkbox"
+                name="dispositivos"
+                value="Teléfono inteligente"
+              />
+              Teléfono inteligente</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="dispositivos"
+                value="Computador portátil"
+              />
+              Computador portátil</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="dispositivos"
+                value="Computador de escritorio"
+              />
+              Computador de escritorio</label
+            >
+            <label
+              ><input type="checkbox" name="dispositivos" value="Tableta" />
+              Tableta</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="dispositivos"
+                value="Televisor inteligente"
+              />
+              Televisor inteligente</label
+            >
+            <label
+              ><input type="checkbox" name="dispositivos" value="Otro" />
+              Otro</label
+            >
+          </div>
+          <input
+            type="text"
+            id="dispositivos_otro"
+            name="dispositivos_otro"
+            placeholder="Si seleccionó Otro, ¿cuál?"
+          />
+        </div>
+
+        <div class="question">
+          <label>11. ¿Para qué utiliza principalmente la tecnología?</label>
+          <div class="options">
+            <label
+              ><input
+                type="checkbox"
+                name="usos_tecnologia"
+                value="Comunicación"
+              />
+              Comunicación</label
+            >
+            <label
+              ><input type="checkbox" name="usos_tecnologia" value="Trabajo" />
+              Trabajo</label
+            >
+            <label
+              ><input type="checkbox" name="usos_tecnologia" value="Estudio" />
+              Estudio</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="usos_tecnologia"
+                value="Entretenimiento"
+              />
+              Entretenimiento</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="usos_tecnologia"
+                value="Compras y pagos"
+              />
+              Compras y pagos</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="usos_tecnologia"
+                value="Redes sociales"
+              />
+              Redes sociales</label
+            >
+            <label
+              ><input type="checkbox" name="usos_tecnologia" value="Juegos" />
+              Juegos</label
+            >
+            <label
+              ><input type="checkbox" name="usos_tecnologia" value="Otro" />
+              Otro</label
+            >
+          </div>
+          <input
+            type="text"
+            id="usos_tecnologia_otro"
+            name="usos_tecnologia_otro"
+            placeholder="Si seleccionó Otro, ¿cuál?"
+          />
+        </div>
+
+        <h2>5. Competencias tecnológicas</h2>
+
+        <div class="question">
+          <label for="habilidad_correo">12. Uso del correo electrónico</label>
+          <select id="habilidad_correo" name="habilidad_correo">
+            <option value="">Seleccione...</option>
+            <option>Ninguna</option>
+            <option>Básica</option>
+            <option>Intermedia</option>
+            <option>Avanzada</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label for="habilidad_word">Uso de Word</label>
+          <select id="habilidad_word" name="habilidad_word">
+            <option value="">Seleccione...</option>
+            <option>Ninguna</option>
+            <option>Básica</option>
+            <option>Intermedia</option>
+            <option>Avanzada</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label for="habilidad_excel">Uso de Excel</label>
+          <select id="habilidad_excel" name="habilidad_excel">
+            <option value="">Seleccione...</option>
+            <option>Ninguna</option>
+            <option>Básica</option>
+            <option>Intermedia</option>
+            <option>Avanzada</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label for="habilidad_videollamadas">Videollamadas</label>
+          <select id="habilidad_videollamadas" name="habilidad_videollamadas">
+            <option value="">Seleccione...</option>
+            <option>Ninguna</option>
+            <option>Básica</option>
+            <option>Intermedia</option>
+            <option>Avanzada</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label for="habilidad_redes">Redes sociales</label>
+          <select id="habilidad_redes" name="habilidad_redes">
+            <option value="">Seleccione...</option>
+            <option>Ninguna</option>
+            <option>Básica</option>
+            <option>Intermedia</option>
+            <option>Avanzada</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label for="habilidad_ia"
+            >Herramientas de Inteligencia Artificial</label
+          >
+          <select id="habilidad_ia" name="habilidad_ia">
+            <option value="">Seleccione...</option>
+            <option>Ninguna</option>
+            <option>Básica</option>
+            <option>Intermedia</option>
+            <option>Avanzada</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label for="habilidad_juegos">Juegos</label>
+          <select id="habilidad_juegos" name="habilidad_juegos">
+            <option value="">Seleccione...</option>
+            <option>Ninguna</option>
+            <option>Básica</option>
+            <option>Intermedia</option>
+            <option>Avanzada</option>
+          </select>
+        </div>
+
+        <h2>6. Percepción sobre la tecnología</h2>
+
+        <div class="question">
+          <label for="mejora_calidad_vida"
+            >13. La tecnología mejora la calidad de vida de las personas. (1 =
+            Totalmente en desacuerdo, 5 = Totalmente de acuerdo)</label
+          >
+          <select id="mejora_calidad_vida" name="mejora_calidad_vida">
+            <option value="">Seleccione...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label for="justificacion_calidad_vida"
+            >Justifique su respuesta</label
+          >
+          <textarea
+            id="justificacion_calidad_vida"
+            name="justificacion_calidad_vida"
+          ></textarea>
+        </div>
+
+        <div class="question">
+          <label
+            >14. ¿Cuáles considera que son los principales beneficios de la
+            tecnología?</label
+          >
+          <div class="options">
+            <label
+              ><input
+                type="checkbox"
+                name="beneficios_tecnologia"
+                value="Acceso a la información"
+              />
+              Acceso a la información</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="beneficios_tecnologia"
+                value="Comunicación rápida"
+              />
+              Comunicación rápida</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="beneficios_tecnologia"
+                value="Educación"
+              />
+              Educación</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="beneficios_tecnologia"
+                value="Productividad laboral"
+              />
+              Productividad laboral</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="beneficios_tecnologia"
+                value="Entretenimiento"
+              />
+              Entretenimiento</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="beneficios_tecnologia"
+                value="Servicios digitales"
+              />
+              Servicios digitales</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="beneficios_tecnologia"
+                value="Otro"
+              />
+              Otro</label
+            >
+          </div>
+          <input
+            type="text"
+            id="beneficios_tecnologia_otro"
+            name="beneficios_tecnologia_otro"
+            placeholder="Si seleccionó Otro, ¿cuál?"
+          />
+        </div>
+
+        <div class="question">
+          <label
+            >15. ¿Cuáles considera que son los principales riesgos de la
+            tecnología?</label
+          >
+          <div class="options">
+            <label
+              ><input
+                type="checkbox"
+                name="riesgos_tecnologia"
+                value="Dependencia o adicción"
+              />
+              Dependencia o adicción</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="riesgos_tecnologia"
+                value="Pérdida de privacidad"
+              />
+              Pérdida de privacidad</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="riesgos_tecnologia"
+                value="Desinformación"
+              />
+              Desinformación</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="riesgos_tecnologia"
+                value="Ciberataques"
+              />
+              Ciberataques</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="riesgos_tecnologia"
+                value="Reducción de interacción social"
+              />
+              Reducción de interacción social</label
+            >
+            <label
+              ><input type="checkbox" name="riesgos_tecnologia" value="Otro" />
+              Otro</label
+            >
+          </div>
+          <input
+            type="text"
+            id="riesgos_tecnologia_otro"
+            name="riesgos_tecnologia_otro"
+            placeholder="Si seleccionó Otro, ¿cuál?"
+          />
+        </div>
+
+        <h2>7. Capacitación tecnológica</h2>
+
+        <div class="question">
+          <label>16. ¿Ha recibido capacitación formal en tecnología?</label>
+          <div class="options">
+            <label
+              ><input type="radio" name="capacitacion_formal" value="Sí" />
+              Sí</label
+            >
+            <label
+              ><input type="radio" name="capacitacion_formal" value="No" />
+              No</label
+            >
+          </div>
+        </div>
+
+        <div class="question">
+          <label
+            >17. ¿Le gustaría recibir capacitación adicional en
+            tecnología?</label
+          >
+          <div class="options">
+            <label
+              ><input type="radio" name="desea_capacitacion" value="Sí" />
+              Sí</label
+            >
+            <label
+              ><input type="radio" name="desea_capacitacion" value="No" />
+              No</label
+            >
+          </div>
+        </div>
+
+        <div class="question">
+          <label>18. ¿En qué temas le gustaría capacitarse?</label>
+          <div class="options">
+            <label
+              ><input type="checkbox" name="temas_capacitacion" value="Word" />
+              Word</label
+            >
+            <label
+              ><input type="checkbox" name="temas_capacitacion" value="Excel" />
+              Excel</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="temas_capacitacion"
+                value="PowerPoint"
+              />
+              PowerPoint</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="temas_capacitacion"
+                value="Internet y correo electrónico"
+              />
+              Internet y correo electrónico</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="temas_capacitacion"
+                value="Inteligencia Artificial"
+              />
+              Inteligencia Artificial</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="temas_capacitacion"
+                value="Seguridad digital"
+              />
+              Seguridad digital</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="temas_capacitacion"
+                value="Programación"
+              />
+              Programación</label
+            >
+            <label
+              ><input type="checkbox" name="temas_capacitacion" value="Otro" />
+              Otro</label
+            >
+          </div>
+          <input
+            type="text"
+            id="temas_capacitacion_otro"
+            name="temas_capacitacion_otro"
+            placeholder="Si seleccionó Otro, ¿cuál?"
+          />
+        </div>
+
+        <h2>8. Respecto a las IA</h2>
+
+        <div class="question">
+          <label>19. ¿Usa herramientas de Inteligencia Artificial?</label>
+          <div class="options">
+            <label><input type="radio" name="usa_ia" value="Sí" /> Sí</label>
+            <label><input type="radio" name="usa_ia" value="No" /> No</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <label for="porque_usa_ia">¿Por qué usa o no usa las IA?</label>
+          <textarea id="porque_usa_ia" name="porque_usa_ia"></textarea>
+        </div>
+
+        <div class="question">
+          <label for="para_que_usa_ia">¿Para qué las usa?</label>
+          <textarea id="para_que_usa_ia" name="para_que_usa_ia"></textarea>
+        </div>
+
+        <div class="question">
+          <label for="ias_mas_usadas">¿Qué IA revisa o usa más seguido?</label>
+          <input
+            type="text"
+            id="ias_mas_usadas"
+            name="ias_mas_usadas"
+            placeholder="Ejemplo: ChatGPT, Gemini, Copilot..."
+          />
+        </div>
+
+        <div class="question">
+          <label for="importancia_ia"
+            >¿Qué importancia le da usted a las IA?</label
+          >
+          <textarea id="importancia_ia" name="importancia_ia"></textarea>
+        </div>
+
+        <div class="question">
+          <label>Entre IA y buscadores como Google, ¿cuál usa más?</label>
+          <div class="options">
+            <label
+              ><input type="radio" name="ia_vs_buscador" value="IA" /> IA</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="ia_vs_buscador"
+                value="Buscadores como Google"
+              />
+              Buscadores como Google</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="ia_vs_buscador"
+                value="Ambos por igual"
+              />
+              Ambos por igual</label
+            >
+            <label
+              ><input type="radio" name="ia_vs_buscador" value="Ninguno" />
+              Ninguno</label
+            >
+          </div>
+        </div>
+
+        <div class="question">
+          <label for="contenido_decisiones"
+            >¿Tiene en cuenta contenidos de IA, Internet, redes sociales y otros
+            contenidos al tomar decisiones? Explique.</label
+          >
+          <textarea
+            id="contenido_decisiones"
+            name="contenido_decisiones"
+          ></textarea>
+        </div>
+
+        <div class="question">
+          <label for="temas_preguntas_ia"
+            >¿Qué temas suele preguntarle a una IA, si la usa?</label
+          >
+          <textarea
+            id="temas_preguntas_ia"
+            name="temas_preguntas_ia"
+          ></textarea>
+        </div>
+
+        <div class="question">
+          <label for="ia_peligro"
+            >¿Considera que las IA se pueden convertir en un peligro?
+            Explique.</label
+          >
+          <textarea id="ia_peligro" name="ia_peligro"></textarea>
+        </div>
+
+        <div class="question">
+          <label for="ia_afecta_vida"
+            >¿Considera que las IA afectan su vida? ¿Cómo y por qué?</label
+          >
+          <textarea id="ia_afecta_vida" name="ia_afecta_vida"></textarea>
+        </div>
+
+        <div class="question">
+          <label for="ia_positivo_sin_peligro"
+            >¿Considera positivo el uso de las IA y no les ve ningún peligro?
+            Justifique su respuesta.</label
+          >
+          <textarea
+            id="ia_positivo_sin_peligro"
+            name="ia_positivo_sin_peligro"
+          ></textarea>
+        </div>
+
+        <h2>9. Comentarios finales</h2>
+
+        <div class="question">
+          <label for="comentarios_finales"
+            >20. ¿Desea agregar algún comentario sobre el uso de la
+            tecnología?</label
+          >
+          <textarea
+            id="comentarios_finales"
+            name="comentarios_finales"
+          ></textarea>
+        </div>
+
+        <div class="buttons">
+          <button type="submit" id="guardar">Guardar encuesta</button>
+          <button type="button" id="descargar">Descargar CSV</button>
+          <button type="button" id="limpiar">Borrar todas las encuestas</button>
+        </div>
+
+        <div id="mensaje"></div>
+
+        <h2>Encuestas guardadas</h2>
+        <p id="contador"></p>
+        <div style="overflow-x: auto">
+          <table id="tablaEncuestas"></table>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const CLAVE = "encuestas_tecnologia";
+
+      const FECHA_FIJA = "28/10/2026";
+      const INVESTIGADOR = "Henry Alberto Rivera Ochoa - 20202020092";
+      const LUGAR = "Bogotá, Colombia";
+
+      function obtenerEncuestas() {
+        return JSON.parse(localStorage.getItem(CLAVE) || "[]");
+      }
+
+      function guardarEncuestas(lista) {
+        localStorage.setItem(CLAVE, JSON.stringify(lista));
+      }
+
+      function mostrarMensaje(texto, tipo) {
+        const mensaje = document.getElementById("mensaje");
+        mensaje.textContent = texto;
+        mensaje.className = tipo;
+        mensaje.style.display = "block";
+        setTimeout(() => {
+          mensaje.style.display = "none";
+        }, 4000);
+      }
+
+      function obtenerValoresCheckbox(nombre) {
+        const seleccionados = [];
+        document
+          .querySelectorAll(`input[name="${nombre}"]:checked`)
+          .forEach((checkbox) => {
+            seleccionados.push(checkbox.value);
+          });
+        return seleccionados.join(" | ");
+      }
+
+      function obtenerValorRadio(nombre) {
+        const seleccionado = document.querySelector(
+          `input[name="${nombre}"]:checked`,
+        );
+        return seleccionado ? seleccionado.value : "";
+      }
+
+      function actualizarTabla() {
+        const encuestas = obtenerEncuestas();
+        const tabla = document.getElementById("tablaEncuestas");
+        const contador = document.getElementById("contador");
+
+        contador.textContent = `Total de encuestas guardadas: ${encuestas.length}`;
+
+        if (encuestas.length === 0) {
+          tabla.innerHTML =
+            "<tr><td>No hay encuestas guardadas todavía.</td></tr>";
+          return;
+        }
+
+        let html = `
+      <tr>
+        <th>#</th>
+        <th>Fecha</th>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Ocupación</th>
+        <th>Domicilio</th>
+        <th>Nivel educativo</th>
+        <th>Nivel tecnológico</th>
+      </tr>
+    `;
+
+        encuestas.forEach((encuesta, index) => {
+          html += `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${encuesta.fecha || ""}</td>
+          <td>${encuesta.nombre || ""}</td>
+          <td>${encuesta.edad || ""}</td>
+          <td>${encuesta.ocupacion || ""}</td>
+          <td>${encuesta.domicilio || ""}</td>
+          <td>${encuesta.nivel_educativo || ""}</td>
+          <td>${encuesta.nivel_tecnologico || ""}</td>
+        </tr>
+      `;
+        });
+
+        tabla.innerHTML = html;
+      }
+
+      document
+        .getElementById("formEncuesta")
+        .addEventListener("submit", function (evento) {
+          evento.preventDefault();
+
+          const encuesta = {
+            fecha: FECHA_FIJA,
+            investigador: INVESTIGADOR,
+            lugar: LUGAR,
+
+            nombre: document.getElementById("nombre").value.trim(),
+            edad: document.getElementById("edad").value,
+            ocupacion: document.getElementById("ocupacion").value.trim(),
+            domicilio: document.getElementById("domicilio").value.trim(),
+            nivel_educativo: document.getElementById("nivel_educativo").value,
+
+            nivel_tecnologico:
+              document.getElementById("nivel_tecnologico").value,
+            que_es_tecnologia: document
+              .getElementById("que_es_tecnologia")
+              .value.trim(),
+            importancia_tecnologia: obtenerValorRadio("importancia_tecnologia"),
+            origen_conocimiento: obtenerValoresCheckbox("origen_conocimiento"),
+            origen_conocimiento_otro: document
+              .getElementById("origen_conocimiento_otro")
+              .value.trim(),
+
+            frecuencia_uso: document.getElementById("frecuencia_uso").value,
+            horas_uso: document.getElementById("horas_uso").value,
+            dispositivos: obtenerValoresCheckbox("dispositivos"),
+            dispositivos_otro: document
+              .getElementById("dispositivos_otro")
+              .value.trim(),
+            usos_tecnologia: obtenerValoresCheckbox("usos_tecnologia"),
+            usos_tecnologia_otro: document
+              .getElementById("usos_tecnologia_otro")
+              .value.trim(),
+
+            habilidad_correo: document.getElementById("habilidad_correo").value,
+            habilidad_word: document.getElementById("habilidad_word").value,
+            habilidad_excel: document.getElementById("habilidad_excel").value,
+            habilidad_videollamadas: document.getElementById(
+              "habilidad_videollamadas",
+            ).value,
+            habilidad_redes: document.getElementById("habilidad_redes").value,
+            habilidad_ia: document.getElementById("habilidad_ia").value,
+            habilidad_juegos: document.getElementById("habilidad_juegos").value,
+
+            mejora_calidad_vida: document.getElementById("mejora_calidad_vida")
+              .value,
+            justificacion_calidad_vida: document
+              .getElementById("justificacion_calidad_vida")
+              .value.trim(),
+            beneficios_tecnologia: obtenerValoresCheckbox(
+              "beneficios_tecnologia",
+            ),
+            beneficios_tecnologia_otro: document
+              .getElementById("beneficios_tecnologia_otro")
+              .value.trim(),
+            riesgos_tecnologia: obtenerValoresCheckbox("riesgos_tecnologia"),
+            riesgos_tecnologia_otro: document
+              .getElementById("riesgos_tecnologia_otro")
+              .value.trim(),
+
+            capacitacion_formal: obtenerValorRadio("capacitacion_formal"),
+            desea_capacitacion: obtenerValorRadio("desea_capacitacion"),
+            temas_capacitacion: obtenerValoresCheckbox("temas_capacitacion"),
+            temas_capacitacion_otro: document
+              .getElementById("temas_capacitacion_otro")
+              .value.trim(),
+
+            usa_ia: obtenerValorRadio("usa_ia"),
+            porque_usa_ia: document
+              .getElementById("porque_usa_ia")
+              .value.trim(),
+            para_que_usa_ia: document
+              .getElementById("para_que_usa_ia")
+              .value.trim(),
+            ias_mas_usadas: document
+              .getElementById("ias_mas_usadas")
+              .value.trim(),
+            importancia_ia: document
+              .getElementById("importancia_ia")
+              .value.trim(),
+            ia_vs_buscador: obtenerValorRadio("ia_vs_buscador"),
+            contenido_decisiones: document
+              .getElementById("contenido_decisiones")
+              .value.trim(),
+            temas_preguntas_ia: document
+              .getElementById("temas_preguntas_ia")
+              .value.trim(),
+            ia_peligro: document.getElementById("ia_peligro").value.trim(),
+            ia_afecta_vida: document
+              .getElementById("ia_afecta_vida")
+              .value.trim(),
+            ia_positivo_sin_peligro: document
+              .getElementById("ia_positivo_sin_peligro")
+              .value.trim(),
+
+            comentarios_finales: document
+              .getElementById("comentarios_finales")
+              .value.trim(),
+          };
+
+          if (
+            !encuesta.nombre ||
+            !encuesta.edad ||
+            !encuesta.ocupacion ||
+            !encuesta.domicilio ||
+            !encuesta.nivel_educativo ||
+            !encuesta.nivel_tecnologico
+          ) {
+            mostrarMensaje(
+              "Por favor complete todos los campos obligatorios de los datos generales y el nivel tecnológico.",
+              "error",
+            );
+            return;
+          }
+
+          const encuestas = obtenerEncuestas();
+          encuestas.push(encuesta);
+          guardarEncuestas(encuestas);
+
+          this.reset();
+          actualizarTabla();
+          mostrarMensaje("Encuesta guardada correctamente.", "ok");
+        });
+
+      function escaparCSV(valor) {
+        const texto = String(valor ?? "");
+        if (
+          texto.includes('"') ||
+          texto.includes(",") ||
+          texto.includes("\n")
+        ) {
+          return `"${texto.replace(/"/g, '""')}"`;
+        }
+        return texto;
+      }
+
+      document
+        .getElementById("descargar")
+        .addEventListener("click", function () {
+          const encuestas = obtenerEncuestas();
+
+          if (encuestas.length === 0) {
+            mostrarMensaje("No hay encuestas para descargar.", "error");
+            return;
+          }
+
+          const encabezados = Object.keys(encuestas[0]);
+          const filas = encuestas.map((encuesta) =>
+            encabezados
+              .map((columna) => escaparCSV(encuesta[columna]))
+              .join(","),
+          );
+
+          const csv = [encabezados.map(escaparCSV).join(","), ...filas].join(
+            "\n",
+          );
+
+          const blob = new Blob(["\uFEFF" + csv], {
+            type: "text/csv;charset=utf-8;",
+          });
+          const enlace = document.createElement("a");
+          enlace.href = URL.createObjectURL(blob);
+          enlace.download = "encuestas_tecnologia.csv";
+          document.body.appendChild(enlace);
+          enlace.click();
+          document.body.removeChild(enlace);
+
+          mostrarMensaje("CSV descargado correctamente.", "ok");
+        });
+
+      document.getElementById("limpiar").addEventListener("click", function () {
+        const encuestas = obtenerEncuestas();
+
+        if (encuestas.length === 0) {
+          mostrarMensaje("No hay encuestas guardadas.", "error");
+          return;
+        }
+
+        const confirmacion = confirm(
+          `¿Seguro que desea borrar las ${encuestas.length} encuestas guardadas? Esta acción no se puede deshacer.`,
+        );
+
+        if (confirmacion) {
+          localStorage.removeItem(CLAVE);
+          actualizarTabla();
+          mostrarMensaje("Todas las encuestas fueron borradas.", "ok");
+        }
+      });
+
+      actualizarTabla();
+    </script>
+  </body>
+</html>
